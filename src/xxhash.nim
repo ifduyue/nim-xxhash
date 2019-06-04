@@ -11,7 +11,7 @@ proc xxh32_intdigest*(input: string, seed: uint32 = 0): uint32 =
   c.xxh32(input.cstring, input.len, seed)
 
 proc xxh32_digest*(input: string, seed: uint32 = 0): string =
-  var intdigest = c.xxh32(input.cstring, input.len, seed)
+  let intdigest = c.xxh32(input.cstring, input.len, seed)
   result = newString(4)
   result[0] = (char)(intdigest shr 24 and 0xFF)
   result[1] = (char)(intdigest shr 16 and 0xFF)
@@ -40,7 +40,7 @@ proc intdigest*(x: XXH32): uint32 =
   c.XXH32_digest(x.state)
 
 proc digest*(x: XXH32): string =
-  var intdigest = c.XXH32_digest(x.state)
+  let intdigest = c.XXH32_digest(x.state)
   result = newString(4)
   result[0] = (char)(intdigest shr 24 and 0xFF)
   result[1] = (char)(intdigest shr 16 and 0xFF)
@@ -63,7 +63,7 @@ proc xxh64_intdigest*(input: string, seed: uint64 = 0): uint64 =
   c.xxh64(input.cstring, input.len, seed)
 
 proc xxh64_digest*(input: string, seed: uint64 = 0): string =
-  var intdigest = c.xxh64(input.cstring, input.len, seed)
+  let intdigest = c.xxh64(input.cstring, input.len, seed)
   result = newString(8)
   result[0] = (char)(intdigest shr 56 and 0xFF)
   result[1] = (char)(intdigest shr 48 and 0xFF)
@@ -97,7 +97,7 @@ proc intdigest*(x: XXH64): uint64 =
   c.XXH64_digest(x.state)
 
 proc digest*(x: XXH64): string =
-  var intdigest = c.XXH64_digest(x.state)
+  let intdigest = c.XXH64_digest(x.state)
   result = newString(8)
   result[0] = (char)(intdigest shr 56 and 0xFF)
   result[1] = (char)(intdigest shr 48 and 0xFF)
