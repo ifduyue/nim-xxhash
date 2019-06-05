@@ -19,7 +19,7 @@ proc xxh32_digest*(input: string, seed: uint32 = 0): string =
   result[3] = (char)(intdigest shr  0 and 0xFF)
 
 proc xxh32_hexdigest*(input: string, seed: uint32 = 0): string =
-  xxh32_digest(input, seed).toHex()
+  xxh32_digest(input, seed).toHex
 
 
 # xxh32 stream
@@ -48,7 +48,7 @@ proc digest*(x: XXH32): string =
   result[3] = (char)(intdigest shr  0 and 0xFF)
 
 proc hexdigest*(x: XXH32): string =
-  x.digest().toHex()
+  x.digest.toHex
 
 proc reset*(x: XXH32) =
   discard c.XXH32_reset(x.state, x.seed)
@@ -75,7 +75,7 @@ proc xxh64_digest*(input: string, seed: uint64 = 0): string =
   result[7] = (char)(intdigest shr  0 and 0xFF)
 
 proc xxh64_hexdigest*(input: string, seed: uint64 = 0): string =
-  xxh64_digest(input, seed).toHex()
+  xxh64_digest(input, seed).toHex
 
 
 # xxh64 stream
@@ -109,7 +109,7 @@ proc digest*(x: XXH64): string =
   result[7] = (char)(intdigest shr  0 and 0xFF)
 
 proc hexdigest*(x: XXH64): string =
-  x.digest().toHex()
+  x.digest.toHex
 
 proc reset*(x: XXH64) =
   discard c.XXH64_reset(x.state, x.seed)
